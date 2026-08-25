@@ -27,6 +27,16 @@ struct EditorView: View {
         }
         .listStyle(.sidebar)
         .navigationTitle("Deadlines")
+        // ⌘1/⌘2/⌘3 switch filters; invisible but shortcut-active.
+        .background {
+            ForEach(Array(Filter.allCases.enumerated()), id: \.offset) { index, target in
+                Button("") { filter = target }
+                    .keyboardShortcut(KeyEquivalent(Character("\(index + 1)")))
+                    .opacity(0)
+                    .allowsHitTesting(false)
+                    .accessibilityHidden(true)
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Picker("Filter", selection: $filter) {
@@ -132,6 +142,10 @@ private struct EditorRow: View {
         // A click opens the same form as Add, where the item can be edited
         // or deleted.
         .onTapGesture(perform: onEdit)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(deadline.title), due \(deadline.due.formatted(date: .abbreviated, time: .shortened))")
+        .accessibilityHint("Opens the deadline for editing")
+        .accessibilityAddTraits(.isButton)
         .contextMenu {
             Button("Edit…", action: onEdit)
             if let url = deadline.url {
