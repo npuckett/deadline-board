@@ -1,4 +1,5 @@
 import SwiftUI
+import UserNotifications
 
 /// UI navigation state shared between the menu bar, deep links, and the editor.
 @Observable
@@ -7,19 +8,54 @@ final class AppNavigation {
     var showingAddSheet = false
 }
 
+/// Handles notification taps by routing through the same deadlines:// deep
+/// link path as the widget rows.
+final class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate {
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        UNUserNotificationCenter.current().delegate = self
+    }
+
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification
+    ) async -> UNNotificationPresentationOptions {
+        [.banner, .sound]
+    }
+
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse
+    ) async {
+        guard let id = response.notification.request.content.userInfo["deadlineID"] as? String,
+              let url = URL(string: "deadlines://open/\(id)")
+        else { return }
+        NSWorkspace.shared.open(url)
+    }
+}
+
 @main
 struct DeadlinesApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @State private var store: DeadlineStore
     @State private var navigation = AppNavigation()
 
     init() {
         let store = DeadlineStore()
         _store = State(initialValue: store)
-        // Refresh the app's instance whenever any store in this process saves
-        // (the AddDeadlineIntent writes through its own instance).
+        // Refresh the app's instance and rebuild notifications whenever any
+        // store in this process saves (the AddDeadlineIntent writes through
+        // its own instance).
         DeadlineStore.onSave = { [weak store] in
             Task { @MainActor in
-                store?.reload()
+                guard let store else { return }
+                store.reload()
+                await NotificationScheduler.shared.rescheduleAll(deadlines: store.deadlines)
+            }
+        }
+        Task { @MainActor [weak store] in
+            await NotificationScheduler.shared.setUp()
+            if let store {
+                await NotificationScheduler.shared.rescheduleAll(deadlines: store.deadlines)
             }
         }
     }

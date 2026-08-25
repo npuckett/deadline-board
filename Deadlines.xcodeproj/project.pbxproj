@@ -19,6 +19,7 @@
 		43CB8FA956733A91197DF52A /* ToggleDoneIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85557CA11DBCFB5B0A4CB5E /* ToggleDoneIntent.swift */; };
 		4AEA0C69E7B4F8C98B6C424D /* Deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860EE5A30D516F03906C2A1D /* Deadline.swift */; };
 		4B4D68BECFB37CCD1ED95E22 /* DeadlineForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5637D7FFED223F1D0B95FB /* DeadlineForm.swift */; };
+		543987587EBA4FDB28AF35AF /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F39015BC447071CE11A6 /* NotificationScheduler.swift */; };
 		550C3A1726ADC1B5A255F168 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB8CB1CD2E8280659849996 /* AppGroup.swift */; };
 		55EFFFA796D671945CEF9800 /* AddDeadlineIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4583C160AAE790F5A40485A2 /* AddDeadlineIntent.swift */; };
 		650184E0935318DB2C91A443 /* AddDeadlineIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4583C160AAE790F5A40485A2 /* AddDeadlineIntent.swift */; };
@@ -69,6 +70,7 @@
 		10571E6BD8723DD2C6C1AE31 /* DeadlineEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineEntryView.swift; sourceTree = "<group>"; };
 		1B60C5DA4B340A96FB1168D4 /* DeadlineStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineStoreTests.swift; sourceTree = "<group>"; };
 		1BB09D9FEC70A36C35C860E5 /* DeadlinesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesApp.swift; sourceTree = "<group>"; };
+		1E89F39015BC447071CE11A6 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
 		34D7B0C8F9CF0D38A1284AC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CD977DA1818DE051E63C6AB /* DeadlinesWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeadlinesWidget.entitlements; sourceTree = "<group>"; };
 		405EFACE655F5CA584E8968B /* CountdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTests.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				1BB09D9FEC70A36C35C860E5 /* DeadlinesApp.swift */,
 				065FB0426DAEF4D757C3B259 /* EditorView.swift */,
 				66E011FD2D90490909CBF1FF /* Info.plist */,
+				1E89F39015BC447071CE11A6 /* NotificationScheduler.swift */,
 				9BF438BE9D004C563DADF8C2 /* SettingsView.swift */,
 			);
 			path = DeadlinesApp;
@@ -338,6 +341,7 @@
 				3B64B9175688970DDB525305 /* DeadlineStore.swift in Sources */,
 				9CBFF3C4A60B5C6947B5257F /* DeadlinesApp.swift in Sources */,
 				DA0F250F6AB586521B805E34 /* EditorView.swift in Sources */,
+				543987587EBA4FDB28AF35AF /* NotificationScheduler.swift in Sources */,
 				FFE9B8FE520E174109348007 /* SettingsView.swift in Sources */,
 				A2EB14B11AEE43CFDAA29893 /* ToggleDoneIntent.swift in Sources */,
 			);
