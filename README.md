@@ -46,10 +46,10 @@ Work proceeds in the phases defined in the plan, with a review checkpoint after 
 
 - [x] **Phase 1 — Scaffold**: project, both targets, entitlements, App Group, URL scheme — builds, signs, and the widget extension registers with the system
 - [x] **Phase 2 — Shared model and store**: `Deadline`, `DeadlineStore`, `Countdown` — all 12 unit tests pass
-- [ ] **Phase 3 — Widget**: timeline provider, entry view, rows, light/dark verification
-- [ ] **Phase 4 — Host app**: menu bar, editor, form, deep links, settings, launch at login
-- [ ] **Phase 5 — Intents**: `ToggleDoneIntent` (widget), `AddDeadlineIntent` (Spotlight/Shortcuts)
-- [ ] **Phase 6 — Notifications**: scheduler, authorization, notification category
+- [x] **Phase 3 — Widget**: timeline provider, entry view, rows *(light/dark + hourly tick verification pending)*
+- [x] **Phase 4 — Host app**: menu bar, editor, form, deep links, settings, launch at login
+- [x] **Phase 5 — Intents**: `ToggleDoneIntent` (widget), `AddDeadlineIntent` (Spotlight/Shortcuts)
+- [x] **Phase 6 — Notifications**: scheduler, authorization, notification category *(live fire test pending)*
 - [ ] **Phase 7 — Polish**: empty state, `+N more`, overdue styling, icons, accessibility
 - [ ] **Phase 8 — Release**: signed, notarized, stapled DMG published as a GitHub release
 
