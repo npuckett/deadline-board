@@ -1,18 +1,45 @@
 # Deadlines
 
-A native macOS desktop widget that lists project, conference, and submission deadlines ranked soonest to furthest, showing days and hours remaining. A small menu bar host app handles entry and editing, stores the data, and fires local notifications before each deadline.
+A macOS desktop widget that keeps your project, conference, and submission deadlines in view — ranked soonest first, with days and hours remaining. A small menu bar app handles entry, editing, and reminder notifications. The widget is the product; the app stays out of the way.
 
-The widget is the product. The app is a settings pane, not a destination.
+<p align="center">
+  <img src="docs/widget-preview.png" width="342" alt="Deadlines widget showing three deadlines with countdowns and urgency colors">
+</p>
 
-Full specification: [deadlines-widget-plan.md](deadlines-widget-plan.md).
+Local only: your deadlines live in a JSON file on your Mac. No accounts, no sync, no network, no third-party code.
 
-## Requirements
+## Install
 
-- macOS 14.0 (Sonoma) or later — first version with desktop widgets and interactive widgets
+1. Download **[Deadlines-0.1.0.dmg](https://github.com/npuckett/deadline-board/releases/download/v0.1.0/Deadlines-0.1.0.dmg)** (or grab the newest version from [Releases](https://github.com/npuckett/deadline-board/releases/latest)).
+2. Open the DMG and drag **Deadlines** to **Applications**.
+3. Launch Deadlines once — it appears as a calendar icon in the menu bar (no dock icon), and asks permission to send reminder notifications.
+4. Add the widget: right-click the desktop, choose **Edit Widgets…**, search for *Deadlines*, and drag the medium or large widget onto the desktop.
+
+The app is signed and notarized, so it opens without Gatekeeper warnings. Requires macOS 14 (Sonoma) or later.
+
+## How to use
+
+**Add a deadline** from the menu bar icon → *Add Deadline…* (⌘N), or just search **"Add Deadline"** in Spotlight to add one without opening a window. Each deadline has a title, a due date and time, an optional link, and reminder times.
+
+**Read the widget** at a glance: deadlines are sorted soonest first, and the dot and countdown are color-coded — red under 24 hours, orange within 7 days, gray beyond that. When a deadline passes, it disappears from the widget automatically.
+
+**Click a widget row** to open that deadline's link in your browser; if it has no link, the editor opens instead.
+
+**Edit or delete** in the editor (menu bar → *Open Editor…*): click any deadline to open the same form as Add, where you can change anything or delete it. Filter with **Upcoming / Past / All** (⌘1/⌘2/⌘3) — passed deadlines collect under *Past* until you delete them.
+
+**Reminders** fire at the times you pick per deadline (from 14 days to 1 hour before). Set the defaults for new deadlines in *Settings…*, along with **Launch at Login** so the widget stays current after a reboot.
+
+## Development
+
+The full specification is in [deadlines-widget-plan.md](deadlines-widget-plan.md).
+
+### Requirements
+
+- macOS 14.0 (Sonoma) or later
 - Xcode 15 or later (full Xcode; Command Line Tools alone cannot build the widget extension)
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`) — the `.xcodeproj` is generated from `project.yml`
 
-## Getting started
+### Getting started
 
 ```bash
 ./scripts/bootstrap.sh
@@ -27,7 +54,7 @@ xcodebuild -scheme Deadlines -destination 'platform=macOS' test
 
 After changing `project.yml` or adding/removing source files, regenerate with `./scripts/generate.sh`.
 
-## Project structure
+### Project structure
 
 | Path | Purpose |
 | --- | --- |
@@ -36,31 +63,14 @@ After changing `project.yml` or adding/removing source files, regenerate with `.
 | `DeadlinesApp/` | Menu bar host app (`LSUIElement`, no dock icon) |
 | `DeadlinesWidget/` | Widget extension (medium and large desktop widgets) |
 | `DeadlinesTests/` | Unit tests for the shared model and countdown logic |
-| `scripts/` | `bootstrap.sh`, `generate.sh`, and (Phase 8) `release.sh` |
+| `scripts/` | `bootstrap.sh`, `generate.sh`, `release.sh`, icon/preview generators |
 
-Data is a single `deadlines.json` in the App Group container (`SAV2V7GXQ5.group.com.puckett.Deadlines` — team-prefixed rather than the plan's `group.` style, because Xcode 15+ requires provisioning profiles for `group.`-style groups and macOS 15 adds a consent prompt for them), read by both targets. Local only — no iCloud, no sync, no accounts, no third-party dependencies.
+Data is a single `deadlines.json` in the App Group container (`SAV2V7GXQ5.group.com.puckett.Deadlines` — team-prefixed rather than the plan's `group.` style, because Xcode 15+ requires provisioning profiles for `group.`-style groups and macOS 15 adds a consent prompt for them), read by both targets.
 
-## Development status
-
-Work proceeds in the phases defined in the plan, with a review checkpoint after each:
-
-- [x] **Phase 1 — Scaffold**: project, both targets, entitlements, App Group, URL scheme — builds, signs, and the widget extension registers with the system
-- [x] **Phase 2 — Shared model and store**: `Deadline`, `DeadlineStore`, `Countdown` — all 12 unit tests pass
-- [x] **Phase 3 — Widget**: timeline provider, entry view, rows *(light/dark + hourly tick verification pending)*
-- [x] **Phase 4 — Host app**: menu bar, editor, form, deep links, settings, launch at login
-- [x] **Phase 5 — Intents**: `ToggleDoneIntent` (widget), `AddDeadlineIntent` (Spotlight/Shortcuts)
-- [x] **Phase 6 — Notifications**: scheduler, authorization, notification category *(live fire test pending)*
-- [x] **Phase 7 — Polish**: empty state, `+N more`, app icon, keyboard shortcuts, accessibility
-- [x] **Phase 8 — Release**: [v0.1.0](https://github.com/npuckett/deadline-board/releases/tag/v0.1.0) — signed, notarized, stapled DMG
-
-## Install
-
-Download the DMG from the [latest release](https://github.com/npuckett/deadline-board/releases/latest), drag Deadlines to Applications, and launch it once — the widget then appears in the desktop widget gallery (right-click the desktop → Edit Widgets).
-
-## CI
+### CI
 
 `.github/workflows/build.yml` builds and runs tests on every push and pull request. Signing and notarization are deliberately excluded from CI — releases are produced locally where the Developer ID keys live.
 
-## Release
+### Release
 
-Phase 8 adds `scripts/release.sh`: archive → export with Developer ID → DMG via `hdiutil` → sign → `notarytool submit --wait` → staple → `gh release create`. See the plan for the full checklist.
+Bump `MARKETING_VERSION` in `project.yml`, update `CHANGELOG.md`, then run `scripts/release.sh <notarytool-profile>`. The script archives, exports with Developer ID, verifies entitlements and hardened runtime, builds and signs the DMG, notarizes and staples it, and publishes a GitHub release.
