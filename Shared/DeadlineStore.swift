@@ -8,6 +8,12 @@ import WidgetKit
 /// exits, uses the static `load(from:)` instead of instantiating the class.
 @Observable
 final class DeadlineStore {
+    /// Set by the host app at launch; called after any in-process save so the
+    /// app can refresh its own instance and reschedule notifications — e.g.
+    /// when AddDeadlineIntent saves through a separate store instance. Never
+    /// set in the widget process.
+    static var onSave: (() -> Void)?
+
     private(set) var deadlines: [Deadline]
 
     private let fileURL: URL
@@ -72,7 +78,14 @@ final class DeadlineStore {
         }
         if reloadsWidgets {
             WidgetCenter.shared.reloadAllTimelines()
+            Self.onSave?()
         }
+    }
+
+    /// Re-reads the file, picking up writes made by other store instances in
+    /// this process (e.g. an App Intent).
+    func reload() {
+        deadlines = Self.load(from: fileURL)
     }
 
     static func load(from url: URL = AppGroup.storeURL) -> [Deadline] {

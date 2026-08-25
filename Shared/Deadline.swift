@@ -28,6 +28,34 @@ extension Deadline {
 
         /// Shipped defaults: 7 days, 1 day, 2 hours.
         static let defaults: [TimeInterval] = [sevenDays, oneDay, twoHours]
+
+        /// Human label for an offset, e.g. "7 days", "12 hours".
+        static func label(for offset: TimeInterval) -> String {
+            if offset >= 24 * 3600 {
+                let days = Int(offset / (24 * 3600))
+                return days == 1 ? "1 day" : "\(days) days"
+            }
+            let hours = Int(offset / 3600)
+            return hours == 1 ? "1 hour" : "\(hours) hours"
+        }
+
+        private static let defaultsKey = "defaultNotifyOffsets"
+
+        /// User-configurable default offsets, stored in the App Group
+        /// UserDefaults so the AddDeadlineIntent sees the same values.
+        static func loadDefaults() -> [TimeInterval] {
+            guard let stored = UserDefaults(suiteName: AppGroup.identifier)?
+                .array(forKey: defaultsKey) as? [TimeInterval]
+            else {
+                return defaults
+            }
+            return stored
+        }
+
+        static func saveDefaults(_ offsets: [TimeInterval]) {
+            UserDefaults(suiteName: AppGroup.identifier)?
+                .set(offsets, forKey: defaultsKey)
+        }
     }
 
     /// Plausible sample data for widget gallery placeholders and previews.
