@@ -49,13 +49,22 @@ xcodebuild -exportArchive \
 APP="build/export/Deadlines.app"
 
 # 5. Verify signatures and entitlements on the app and the embedded appex.
+#    Capture output before grepping: piping codesign straight into grep -q
+#    trips pipefail via SIGPIPE even when the check passes.
 codesign --verify --deep --strict --verbose=2 "$APP"
-codesign -d --entitlements - "$APP" | grep -q application-groups \
+APPEX="$APP/Contents/Extensions/DeadlinesWidget.appex"
+app_entitlements=$(codesign -d --entitlements - "$APP" 2>&1)
+grep -q application-groups <<<"$app_entitlements" \
     || { echo "App Group entitlement missing from app" >&2; exit 1; }
-codesign -d --entitlements - "$APP/Contents/Extensions/DeadlinesWidget.appex" | grep -q application-groups \
+appex_entitlements=$(codesign -d --entitlements - "$APPEX" 2>&1)
+grep -q application-groups <<<"$appex_entitlements" \
     || { echo "App Group entitlement missing from widget" >&2; exit 1; }
-codesign -d -vv "$APP" 2>&1 | grep -q "flags=0x10000(runtime)" \
+app_signing=$(codesign -d -vv "$APP" 2>&1)
+grep -q "flags=0x10000(runtime)" <<<"$app_signing" \
     || { echo "Hardened runtime not enabled on app" >&2; exit 1; }
+appex_signing=$(codesign -d -vv "$APPEX" 2>&1)
+grep -q "flags=0x10000(runtime)" <<<"$appex_signing" \
+    || { echo "Hardened runtime not enabled on widget" >&2; exit 1; }
 
 # 6. Build the DMG: app + /Applications symlink.
 rm -rf build/staging

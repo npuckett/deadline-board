@@ -51,4 +51,8 @@ security find-identity -v -p codesigning
 xcrun notarytool history --keychain-profile <name>
 ```
 
-`scripts/release.sh` (written in Phase 8) drives archive → export → DMG → sign → notarize → staple → `gh release create`. Take the version from `MARKETING_VERSION` in `project.yml`.
+`scripts/release.sh <notary-profile>` drives archive → export → DMG → sign → notarize → staple → `gh release create`. The version comes from `MARKETING_VERSION` in `project.yml`. The notarytool keychain profile on this machine is named `PrimusCentral Notary` (documented in the PrimusV3 repo's `V3_5/PACKAGING.md`):
+
+```bash
+./scripts/release.sh "PrimusCentral Notary"
+```
