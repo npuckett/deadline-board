@@ -56,31 +56,31 @@ final class DeadlineStoreTests: XCTestCase {
         XCTAssertEqual(makeStore().deadlines, [])
     }
 
-    func testUpcomingSortsAscendingAndKeepsOverdue() {
+    func testUpcomingExcludesPassedAndDoneSortsAscending() {
         let now = date(1_800_000_000)
-        let overdue = Deadline(title: "Overdue", due: now.addingTimeInterval(-3600), notifyOffsets: [])
+        let passed = Deadline(title: "Passed", due: now.addingTimeInterval(-3600), notifyOffsets: [])
         let near = Deadline(title: "Near", due: now.addingTimeInterval(3600), notifyOffsets: [])
         let far = Deadline(title: "Far", due: now.addingTimeInterval(9 * 24 * 3600), notifyOffsets: [])
         let done = Deadline(title: "Done", due: now.addingTimeInterval(60), notifyOffsets: [], isDone: true)
 
-        let store = makeStore()
-        for deadline in [far, done, near, overdue] {
-            store.add(deadline)
-        }
-
-        // Overdue stays at the top rather than disappearing; done is excluded.
-        XCTAssertEqual(store.upcoming.map(\.title), ["Overdue", "Near", "Far"])
-        XCTAssertEqual(DeadlineStore.upcoming(in: store.deadlines).map(\.title), ["Overdue", "Near", "Far"])
+        // Passed deadlines auto-disappear from upcoming; done is excluded too.
+        let upcoming = DeadlineStore.upcoming(in: [far, done, near, passed], asOf: now)
+        XCTAssertEqual(upcoming.map(\.title), ["Near", "Far"])
     }
 
-    func testToggleDoneAndRemovePersist() {
-        let deadline = Deadline(title: "Toggle me", due: date(1_800_000_000), notifyOffsets: [])
+    func testInstanceUpcomingAndPastSplitAtNow() {
+        let store = makeStore()
+        store.add(Deadline(title: "Future", due: Date().addingTimeInterval(3600), notifyOffsets: []))
+        store.add(Deadline(title: "Passed", due: Date().addingTimeInterval(-3600), notifyOffsets: []))
+
+        XCTAssertEqual(store.upcoming.map(\.title), ["Future"])
+        XCTAssertEqual(store.past.map(\.title), ["Passed"])
+    }
+
+    func testRemovePersists() {
+        let deadline = Deadline(title: "Remove me", due: date(1_800_000_000), notifyOffsets: [])
         let store = makeStore()
         store.add(deadline)
-
-        store.toggleDone(id: deadline.id)
-        XCTAssertTrue(DeadlineStore.load(from: fileURL).first!.isDone)
-        XCTAssertEqual(store.upcoming, [])
 
         store.remove(id: deadline.id)
         XCTAssertEqual(DeadlineStore.load(from: fileURL), [])

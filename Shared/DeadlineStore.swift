@@ -28,14 +28,17 @@ final class DeadlineStore {
         self.deadlines = Self.load(from: fileURL)
     }
 
-    /// Not-done deadlines sorted by due date ascending. Overdue items sort
-    /// first rather than disappearing, so nothing is silently lost.
+    /// Not-done deadlines that haven't passed yet, sorted by due date
+    /// ascending. Passed deadlines disappear from upcoming automatically
+    /// (per user preference, overriding the plan's overdue-stays behavior);
+    /// they remain in `deadlines` and the editor's All filter.
     var upcoming: [Deadline] {
-        deadlines.filter { !$0.isDone }.sorted { $0.due < $1.due }
+        Self.upcoming(in: deadlines)
     }
 
-    var done: [Deadline] {
-        deadlines.filter(\.isDone).sorted { $0.due > $1.due }
+    /// Deadlines whose due date has passed, most recent first.
+    var past: [Deadline] {
+        deadlines.filter { $0.due <= Date() }.sorted { $0.due > $1.due }
     }
 
     func add(_ deadline: Deadline) {
@@ -51,12 +54,6 @@ final class DeadlineStore {
 
     func remove(id: UUID) {
         deadlines.removeAll { $0.id == id }
-        save()
-    }
-
-    func toggleDone(id: UUID) {
-        guard let index = deadlines.firstIndex(where: { $0.id == id }) else { return }
-        deadlines[index].isDone.toggle()
         save()
     }
 
@@ -99,8 +96,8 @@ final class DeadlineStore {
     }
 
     /// Same filtering and sorting as `upcoming`, for use with a static load.
-    static func upcoming(in deadlines: [Deadline]) -> [Deadline] {
-        deadlines.filter { !$0.isDone }.sorted { $0.due < $1.due }
+    static func upcoming(in deadlines: [Deadline], asOf now: Date = Date()) -> [Deadline] {
+        deadlines.filter { !$0.isDone && $0.due > now }.sorted { $0.due < $1.due }
     }
 
     // ISO 8601 dates keep the JSON file human-readable. Note this truncates

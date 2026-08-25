@@ -39,17 +39,6 @@ struct DeadlineRow: View {
                     .font(.subheadline.weight(.semibold))
                     .monospacedDigit()
                     .foregroundStyle(urgency.color)
-
-                // Low visual weight, generous tap target.
-                Button(intent: ToggleDoneIntent(id: deadline.id)) {
-                    Image(systemName: "circle")
-                        .font(.system(size: 13))
-                        .foregroundStyle(.tertiary)
-                        .frame(width: 22, height: 22)
-                        .contentShape(Rectangle())
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Mark \(deadline.title) done")
             }
         }
         .accessibilityElement(children: .combine)

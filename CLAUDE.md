@@ -25,6 +25,7 @@ Full Xcode is required (widget extension target); Command Line Tools alone will 
 - Widget rows deep-link through the app (`deadlines://open/<uuid>`), never directly to external URLs.
 - Tests inject a temp `fileURL` and `reloadsWidgets: false` into `DeadlineStore` — never touch the real App Group container or WidgetCenter from tests.
 - Countdown strings are computed from an explicit `now` (the timeline entry date), never `Date()` inside widget views.
+- Deviations from the plan, per user feedback: deadlines **auto-disappear** from upcoming when they pass (the plan's "overdue stays at top" is overridden; passed items live in the editor's Past filter). There is **no mark-as-done UI** — no circle button on widget or editor rows, and ToggleDoneIntent was removed; clicking an editor row opens the same form as Add, which handles edit and delete. The `isDone` model field remains for JSON compatibility. Do not reintroduce done-toggling without asking.
 
 Identifiers: app `com.puckett.Deadlines`, widget `com.puckett.Deadlines.Widget`, group `SAV2V7GXQ5.group.com.puckett.Deadlines` (team-prefixed, deviating from the plan — `group.`-style groups require provisioning profiles on Xcode 15+ and trigger a consent prompt on macOS 15), URL scheme `deadlines`, team `SAV2V7GXQ5`.
 

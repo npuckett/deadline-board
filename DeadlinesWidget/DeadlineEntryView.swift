@@ -18,7 +18,11 @@ struct DeadlineEntryView: View {
                 .foregroundStyle(.secondary)
                 .accessibilityAddTraits(.isHeader)
 
-            if entry.deadlines.isEmpty {
+            // Entries share one deadline array; filter against the entry date
+            // so a deadline disappears at the entry just past its due moment.
+            let visible = entry.deadlines.filter { $0.due > entry.date }
+
+            if visible.isEmpty {
                 Spacer()
                 Text("No upcoming deadlines")
                     .font(.callout)
@@ -26,8 +30,8 @@ struct DeadlineEntryView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                 Spacer()
             } else {
-                let shown = Array(entry.deadlines.prefix(maxRows))
-                let hidden = entry.deadlines.count - shown.count
+                let shown = Array(visible.prefix(maxRows))
+                let hidden = visible.count - shown.count
 
                 VStack(alignment: .leading, spacing: 7) {
                     ForEach(shown) { deadline in

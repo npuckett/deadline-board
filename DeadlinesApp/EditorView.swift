@@ -6,27 +6,21 @@ struct EditorView: View {
 
     enum Filter: String, CaseIterable {
         case upcoming = "Upcoming"
-        case done = "Done"
+        case past = "Past"
         case all = "All"
     }
 
     @State private var filter: Filter = .upcoming
     @State private var editing: Deadline?
     @State private var pendingDelete: Deadline?
-    @State private var doneSectionExpanded = false
 
     var body: some View {
         List {
             switch filter {
             case .upcoming:
                 rows(store.upcoming, emptyText: "No upcoming deadlines")
-                if !store.done.isEmpty {
-                    Section("Done", isExpanded: $doneSectionExpanded) {
-                        rows(store.done, emptyText: nil)
-                    }
-                }
-            case .done:
-                rows(store.done, emptyText: "Nothing done yet")
+            case .past:
+                rows(store.past, emptyText: "No past deadlines")
             case .all:
                 rows(store.deadlines.sorted { $0.due < $1.due }, emptyText: "No deadlines")
             }
@@ -70,7 +64,7 @@ struct EditorView: View {
                 pendingDelete = nil
             }
         } message: {
-            Text("This deadline isn't done yet.")
+            Text("This deadline hasn't passed yet.")
         }
         .onChange(of: navigation.selectedDeadlineID) { _, id in
             // Deep link selected an item: open it for editing.
@@ -95,8 +89,8 @@ struct EditorView: View {
                 EditorRow(deadline: deadline, store: store) {
                     editing = deadline
                 } onDelete: {
-                    // Confirm only for items that are not yet done.
-                    if deadline.isDone {
+                    // Confirm only for deadlines that haven't passed yet.
+                    if deadline.due <= Date() {
                         store.remove(id: deadline.id)
                     } else {
                         pendingDelete = deadline
@@ -119,19 +113,9 @@ private struct EditorRow: View {
 
     var body: some View {
         HStack(spacing: 8) {
-            Button {
-                store.toggleDone(id: deadline.id)
-            } label: {
-                Image(systemName: deadline.isDone ? "checkmark.circle.fill" : "circle")
-                    .foregroundStyle(deadline.isDone ? Color.accentColor : .secondary)
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel(deadline.isDone ? "Mark not done" : "Mark done")
-
             VStack(alignment: .leading, spacing: 1) {
                 Text(deadline.title)
-                    .strikethrough(deadline.isDone)
-                    .foregroundStyle(deadline.isDone ? .secondary : .primary)
+                    .foregroundStyle(urgency == .overdue ? .secondary : .primary)
                 Text(deadline.due.formatted(date: .abbreviated, time: .shortened))
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -139,20 +123,17 @@ private struct EditorRow: View {
 
             Spacer()
 
-            if !deadline.isDone {
-                Text(Countdown.label(from: Date(), to: deadline.due))
-                    .monospacedDigit()
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(urgency.color)
-            }
+            Text(Countdown.label(from: Date(), to: deadline.due))
+                .monospacedDigit()
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(urgency == .overdue ? Color.secondary : urgency.color)
         }
         .contentShape(Rectangle())
-        .onTapGesture(count: 2, perform: onEdit)
+        // A click opens the same form as Add, where the item can be edited
+        // or deleted.
+        .onTapGesture(perform: onEdit)
         .contextMenu {
             Button("Edit…", action: onEdit)
-            Button(deadline.isDone ? "Mark Not Done" : "Mark Done") {
-                store.toggleDone(id: deadline.id)
-            }
             if let url = deadline.url {
                 Button("Open Link") {
                     NSWorkspace.shared.open(url)
