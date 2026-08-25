@@ -38,6 +38,7 @@ Signing is Manual with the Developer ID Application identity for **all** configu
 - App Intent files must be members of **both** app and widget targets or the widget button silently does nothing (in `project.yml`, `Shared/` is in both source lists — keep intents under `Shared/Intents/`).
 - Missing the App Group on either target's entitlements → widget shows empty data.
 - After changing entitlements, delete the app and widget from the Mac and reinstall.
+- Widget registration follows the most recently registered app copy. Building releases into `build/` and then deleting that folder orphans the registration — the widget vanishes from the gallery and stops updating. Fix: copy the exported app to `/Applications`, `lsregister -f` it, launch it, `killall chronod`. Day-to-day, treat `/Applications/Deadlines.app` as the installed copy and avoid launching apps from transient build paths.
 - `MenuBarExtra` `.menu` style only supports simple `Button`/`Text` rows; use `.window` style for real layout.
 - `SMAppService` launch-at-login needs the app in `/Applications` to register reliably.
 - Keep the timeline provider synchronous and light — widget processes are killed quickly.
