@@ -1,0 +1,99 @@
+name: Deadlines
+options:
+  bundleIdPrefix: com.puckett
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: 1
+    DEVELOPMENT_TEAM: SAV2V7GXQ5
+    SWIFT_VERSION: "5.9"
+    # Manual Developer ID signing everywhere: no Apple ID account in Xcode is
+    # needed, and it matches the release configuration from the start.
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "Developer ID Application: Nicholas Puckett (SAV2V7GXQ5)"
+targets:
+  Deadlines:
+    type: application
+    platform: macOS
+    sources:
+      - path: DeadlinesApp
+      - path: Shared
+    entitlements:
+      path: DeadlinesApp/DeadlinesApp.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.application-groups:
+          - SAV2V7GXQ5.group.com.puckett.Deadlines
+    info:
+      path: DeadlinesApp/Info.plist
+      properties:
+        CFBundleDisplayName: Deadlines
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSUIElement: true
+        LSApplicationCategoryType: public.app-category.productivity
+        CFBundleURLTypes:
+          - CFBundleURLName: com.puckett.Deadlines
+            CFBundleURLSchemes:
+              - deadlines
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.puckett.Deadlines
+        PRODUCT_NAME: Deadlines
+        ENABLE_HARDENED_RUNTIME: true
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    dependencies:
+      - target: DeadlinesWidget
+  DeadlinesWidget:
+    type: extensionkit-extension
+    platform: macOS
+    sources:
+      - path: DeadlinesWidget
+      - path: Shared
+    entitlements:
+      path: DeadlinesWidget/DeadlinesWidget.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.application-groups:
+          - SAV2V7GXQ5.group.com.puckett.Deadlines
+    info:
+      path: DeadlinesWidget/Info.plist
+      properties:
+        CFBundleDisplayName: Deadlines
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundlePackageType: XPC!
+        EXAppExtensionAttributes:
+          EXExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.puckett.Deadlines.Widget
+        PRODUCT_NAME: DeadlinesWidget
+        ENABLE_HARDENED_RUNTIME: true
+  DeadlinesTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: DeadlinesTests
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.puckett.DeadlinesTests
+        GENERATE_INFOPLIST_FILE: true
+schemes:
+  Deadlines:
+    build:
+      targets:
+        Deadlines: all
+    run:
+      config: Debug
+    test:
+      targets:
+        - DeadlinesTests
+      gatherCoverageData: true
+    archive:
+      config: Release

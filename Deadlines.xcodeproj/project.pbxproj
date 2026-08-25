@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0962CA895D4ADB45ECE8A8B3 /* Deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860EE5A30D516F03906C2A1D /* Deadline.swift */; };
+		13AC0BAF83FBAB0F17C35F58 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9C16C12E736514C7C918D0 /* Countdown.swift */; };
+		2074363F9C5060CCA9C0A89D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34D7B0C8F9CF0D38A1284AC8 /* Assets.xcassets */; };
+		2541D4CB27C61C69A2527C44 /* DeadlinesWidget.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = 8DC11A5F567DF48210752E2D /* DeadlinesWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		259BE8DD5CA7A7A3D62BF76E /* DeadlinesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097ADC76AD12EED76A7CE74 /* DeadlinesWidget.swift */; };
+		26ACF69A6026E98B73077A48 /* DeadlineStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7389E2A36B505E1D5ABEFB /* DeadlineStore.swift */; };
+		3B64B9175688970DDB525305 /* DeadlineStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7389E2A36B505E1D5ABEFB /* DeadlineStore.swift */; };
+		4AEA0C69E7B4F8C98B6C424D /* Deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860EE5A30D516F03906C2A1D /* Deadline.swift */; };
+		550C3A1726ADC1B5A255F168 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB8CB1CD2E8280659849996 /* AppGroup.swift */; };
+		6FE0BEBBC66114116F02B98D /* DeadlineStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B60C5DA4B340A96FB1168D4 /* DeadlineStoreTests.swift */; };
+		87317D0ACECA1A6BE76DCDF3 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9C16C12E736514C7C918D0 /* Countdown.swift */; };
+		9CBFF3C4A60B5C6947B5257F /* DeadlinesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB09D9FEC70A36C35C860E5 /* DeadlinesApp.swift */; };
+		B0E5BF79C4E06214696B6D45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A64A51CE89805B28344AC10F /* Assets.xcassets */; };
+		B6AD1F4ED2A560B11FD49163 /* DeadlineStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7389E2A36B505E1D5ABEFB /* DeadlineStore.swift */; };
+		B78694FFAD3438C914C3C751 /* CountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405EFACE655F5CA584E8968B /* CountdownTests.swift */; };
+		BCDD2C56C25DE15762D14CE0 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9C16C12E736514C7C918D0 /* Countdown.swift */; };
+		C208BEE411572CF74276DE1E /* Deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860EE5A30D516F03906C2A1D /* Deadline.swift */; };
+		C4F4CEB0FAAA37F79889624B /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB8CB1CD2E8280659849996 /* AppGroup.swift */; };
+		CC793C65073E8F00D033AFBF /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB8CB1CD2E8280659849996 /* AppGroup.swift */; };
+		DA0F250F6AB586521B805E34 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065FB0426DAEF4D757C3B259 /* EditorView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C355EDA5E27694A06A1A5B6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2597617B0FC8BBD36E8A34B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1C4E2C4F41F9AB6C8ACAEC8;
+			remoteInfo = DeadlinesWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		310E1177B6D4EABBE331067A /* Embed ExtensionKit Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				2541D4CB27C61C69A2527C44 /* DeadlinesWidget.appex in Embed ExtensionKit Extensions */,
+			);
+			name = "Embed ExtensionKit Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		065FB0426DAEF4D757C3B259 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		1B60C5DA4B340A96FB1168D4 /* DeadlineStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineStoreTests.swift; sourceTree = "<group>"; };
+		1BB09D9FEC70A36C35C860E5 /* DeadlinesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesApp.swift; sourceTree = "<group>"; };
+		34D7B0C8F9CF0D38A1284AC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3CD977DA1818DE051E63C6AB /* DeadlinesWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeadlinesWidget.entitlements; sourceTree = "<group>"; };
+		405EFACE655F5CA584E8968B /* CountdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTests.swift; sourceTree = "<group>"; };
+		66B6C113BDFA437B550FAEAC /* Deadlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deadlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E011FD2D90490909CBF1FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8042997EDE77A9B858259486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		860EE5A30D516F03906C2A1D /* Deadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deadline.swift; sourceTree = "<group>"; };
+		8DC11A5F567DF48210752E2D /* DeadlinesWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = DeadlinesWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A02E90CBDC170F4781E5DE5B /* DeadlinesApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeadlinesApp.entitlements; sourceTree = "<group>"; };
+		A1F1A68572B31C92FA31CF04 /* DeadlinesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeadlinesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A64A51CE89805B28344AC10F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AAB8CB1CD2E8280659849996 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		CD7389E2A36B505E1D5ABEFB /* DeadlineStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineStore.swift; sourceTree = "<group>"; };
+		EB9C16C12E736514C7C918D0 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
+		F097ADC76AD12EED76A7CE74 /* DeadlinesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesWidget.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		38AF55C705441053622E44BC /* DeadlinesApp */ = {
+			isa = PBXGroup;
+			children = (
+				A64A51CE89805B28344AC10F /* Assets.xcassets */,
+				A02E90CBDC170F4781E5DE5B /* DeadlinesApp.entitlements */,
+				1BB09D9FEC70A36C35C860E5 /* DeadlinesApp.swift */,
+				065FB0426DAEF4D757C3B259 /* EditorView.swift */,
+				66E011FD2D90490909CBF1FF /* Info.plist */,
+			);
+			path = DeadlinesApp;
+			sourceTree = "<group>";
+		};
+		3B16734205B9F73DDA96FC24 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AAB8CB1CD2E8280659849996 /* AppGroup.swift */,
+				EB9C16C12E736514C7C918D0 /* Countdown.swift */,
+				860EE5A30D516F03906C2A1D /* Deadline.swift */,
+				CD7389E2A36B505E1D5ABEFB /* DeadlineStore.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		55AA625D0F1832DB43A18808 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				66B6C113BDFA437B550FAEAC /* Deadlines.app */,
+				A1F1A68572B31C92FA31CF04 /* DeadlinesTests.xctest */,
+				8DC11A5F567DF48210752E2D /* DeadlinesWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6216B1DFA5665100CCB88F75 = {
+			isa = PBXGroup;
+			children = (
+				38AF55C705441053622E44BC /* DeadlinesApp */,
+				DCF71B5D311104172F7BEFB4 /* DeadlinesTests */,
+				E94B84BA6A4F11E6F6F287AA /* DeadlinesWidget */,
+				3B16734205B9F73DDA96FC24 /* Shared */,
+				55AA625D0F1832DB43A18808 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DCF71B5D311104172F7BEFB4 /* DeadlinesTests */ = {
+			isa = PBXGroup;
+			children = (
+				405EFACE655F5CA584E8968B /* CountdownTests.swift */,
+				1B60C5DA4B340A96FB1168D4 /* DeadlineStoreTests.swift */,
+			);
+			path = DeadlinesTests;
+			sourceTree = "<group>";
+		};
+		E94B84BA6A4F11E6F6F287AA /* DeadlinesWidget */ = {
+			isa = PBXGroup;
+			children = (
+				34D7B0C8F9CF0D38A1284AC8 /* Assets.xcassets */,
+				3CD977DA1818DE051E63C6AB /* DeadlinesWidget.entitlements */,
+				F097ADC76AD12EED76A7CE74 /* DeadlinesWidget.swift */,
+				8042997EDE77A9B858259486 /* Info.plist */,
+			);
+			path = DeadlinesWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4F5362552C3ED8493249804B /* DeadlinesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34A8AB824F03F99201270CCF /* Build configuration list for PBXNativeTarget "DeadlinesTests" */;
+			buildPhases = (
+				2617D75FDE23DABA172C3B7F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DeadlinesTests;
+			packageProductDependencies = (
+			);
+			productName = DeadlinesTests;
+			productReference = A1F1A68572B31C92FA31CF04 /* DeadlinesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9C238CA7F564F2D609D003FC /* Deadlines */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7BD769D9760B93587634F2AC /* Build configuration list for PBXNativeTarget "Deadlines" */;
+			buildPhases = (
+				517A0DFA0B9FAA92FC9EA4C2 /* Sources */,
+				4216DFAD042E54351B4A085C /* Resources */,
+				310E1177B6D4EABBE331067A /* Embed ExtensionKit Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C99178615335C194EAB3FE60 /* PBXTargetDependency */,
+			);
+			name = Deadlines;
+			packageProductDependencies = (
+			);
+			productName = Deadlines;
+			productReference = 66B6C113BDFA437B550FAEAC /* Deadlines.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E1C4E2C4F41F9AB6C8ACAEC8 /* DeadlinesWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8790CBE14D95A332834EB9AA /* Build configuration list for PBXNativeTarget "DeadlinesWidget" */;
+			buildPhases = (
+				10B66D89DB83EAB0F6421C5E /* Sources */,
+				99F3D75EC561968C84634D60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DeadlinesWidget;
+			packageProductDependencies = (
+			);
+			productName = DeadlinesWidget;
+			productReference = 8DC11A5F567DF48210752E2D /* DeadlinesWidget.appex */;
+			productType = "com.apple.product-type.extensionkit-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C2597617B0FC8BBD36E8A34B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					4F5362552C3ED8493249804B = {
+						DevelopmentTeam = SAV2V7GXQ5;
+						ProvisioningStyle = Manual;
+					};
+					9C238CA7F564F2D609D003FC = {
+						DevelopmentTeam = SAV2V7GXQ5;
+						ProvisioningStyle = Manual;
+					};
+					E1C4E2C4F41F9AB6C8ACAEC8 = {
+						DevelopmentTeam = SAV2V7GXQ5;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 6B79AE447A91D1728C124370 /* Build configuration list for PBXProject "Deadlines" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 6216B1DFA5665100CCB88F75;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 55AA625D0F1832DB43A18808 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9C238CA7F564F2D609D003FC /* Deadlines */,
+				E1C4E2C4F41F9AB6C8ACAEC8 /* DeadlinesWidget */,
+				4F5362552C3ED8493249804B /* DeadlinesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4216DFAD042E54351B4A085C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0E5BF79C4E06214696B6D45 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99F3D75EC561968C84634D60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2074363F9C5060CCA9C0A89D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10B66D89DB83EAB0F6421C5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC793C65073E8F00D033AFBF /* AppGroup.swift in Sources */,
+				BCDD2C56C25DE15762D14CE0 /* Countdown.swift in Sources */,
+				4AEA0C69E7B4F8C98B6C424D /* Deadline.swift in Sources */,
+				26ACF69A6026E98B73077A48 /* DeadlineStore.swift in Sources */,
+				259BE8DD5CA7A7A3D62BF76E /* DeadlinesWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2617D75FDE23DABA172C3B7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4F4CEB0FAAA37F79889624B /* AppGroup.swift in Sources */,
+				87317D0ACECA1A6BE76DCDF3 /* Countdown.swift in Sources */,
+				B78694FFAD3438C914C3C751 /* CountdownTests.swift in Sources */,
+				C208BEE411572CF74276DE1E /* Deadline.swift in Sources */,
+				B6AD1F4ED2A560B11FD49163 /* DeadlineStore.swift in Sources */,
+				6FE0BEBBC66114116F02B98D /* DeadlineStoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		517A0DFA0B9FAA92FC9EA4C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				550C3A1726ADC1B5A255F168 /* AppGroup.swift in Sources */,
+				13AC0BAF83FBAB0F17C35F58 /* Countdown.swift in Sources */,
+				0962CA895D4ADB45ECE8A8B3 /* Deadline.swift in Sources */,
+				3B64B9175688970DDB525305 /* DeadlineStore.swift in Sources */,
+				9CBFF3C4A60B5C6947B5257F /* DeadlinesApp.swift in Sources */,
+				DA0F250F6AB586521B805E34 /* EditorView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C99178615335C194EAB3FE60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1C4E2C4F41F9AB6C8ACAEC8 /* DeadlinesWidget */;
+			targetProxy = C355EDA5E27694A06A1A5B6A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1F26DE52DD8B6D9E7FA68A67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Nicholas Puckett (SAV2V7GXQ5)";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = SAV2V7GXQ5;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		2895F2DEA92B3FA5825A6B1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DeadlinesWidget/DeadlinesWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = DeadlinesWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.puckett.Deadlines.Widget;
+				PRODUCT_NAME = DeadlinesWidget;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		51705A7EE48668288BDE2394 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DeadlinesApp/DeadlinesApp.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = DeadlinesApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.puckett.Deadlines;
+				PRODUCT_NAME = Deadlines;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		74964A99365BAD893D7D67D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.puckett.DeadlinesTests;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		939E862AABF0E5258C6D1863 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.puckett.DeadlinesTests;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B45F723285126D32104C9D21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Nicholas Puckett (SAV2V7GXQ5)";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = SAV2V7GXQ5;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		B5B097552EF4F0D6C686ABFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DeadlinesApp/DeadlinesApp.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = DeadlinesApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.puckett.Deadlines;
+				PRODUCT_NAME = Deadlines;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E888EED0D4159A905C7E4D8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DeadlinesWidget/DeadlinesWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = DeadlinesWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.puckett.Deadlines.Widget;
+				PRODUCT_NAME = DeadlinesWidget;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		34A8AB824F03F99201270CCF /* Build configuration list for PBXNativeTarget "DeadlinesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				939E862AABF0E5258C6D1863 /* Debug */,
+				74964A99365BAD893D7D67D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6B79AE447A91D1728C124370 /* Build configuration list for PBXProject "Deadlines" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F26DE52DD8B6D9E7FA68A67 /* Debug */,
+				B45F723285126D32104C9D21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7BD769D9760B93587634F2AC /* Build configuration list for PBXNativeTarget "Deadlines" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51705A7EE48668288BDE2394 /* Debug */,
+				B5B097552EF4F0D6C686ABFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8790CBE14D95A332834EB9AA /* Build configuration list for PBXNativeTarget "DeadlinesWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E888EED0D4159A905C7E4D8E /* Debug */,
+				2895F2DEA92B3FA5825A6B1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C2597617B0FC8BBD36E8A34B /* Project object */;
+}

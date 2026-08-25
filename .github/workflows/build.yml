@@ -1,0 +1,38 @@
+name: Build
+
+# Builds and tests on push for confidence. No signing or notarization in CI —
+# release signing happens locally where the keys live (scripts/release.sh,
+# added in Phase 8).
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate project
+        run: xcodegen generate
+
+      - name: Build
+        run: |
+          xcodebuild -scheme Deadlines \
+            -destination 'platform=macOS' \
+            -configuration Debug \
+            build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_IDENTITY=""
+
+      - name: Test
+        run: |
+          xcodebuild -scheme Deadlines \
+            -destination 'platform=macOS' \
+            test \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_IDENTITY=""
