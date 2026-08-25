@@ -50,8 +50,12 @@ Work proceeds in the phases defined in the plan, with a review checkpoint after 
 - [x] **Phase 4 — Host app**: menu bar, editor, form, deep links, settings, launch at login
 - [x] **Phase 5 — Intents**: `ToggleDoneIntent` (widget), `AddDeadlineIntent` (Spotlight/Shortcuts)
 - [x] **Phase 6 — Notifications**: scheduler, authorization, notification category *(live fire test pending)*
-- [ ] **Phase 7 — Polish**: empty state, `+N more`, overdue styling, icons, accessibility
-- [ ] **Phase 8 — Release**: signed, notarized, stapled DMG published as a GitHub release
+- [x] **Phase 7 — Polish**: empty state, `+N more`, app icon, keyboard shortcuts, accessibility
+- [x] **Phase 8 — Release**: [v0.1.0](https://github.com/npuckett/deadline-board/releases/tag/v0.1.0) — signed, notarized, stapled DMG
+
+## Install
+
+Download the DMG from the [latest release](https://github.com/npuckett/deadline-board/releases/latest), drag Deadlines to Applications, and launch it once — the widget then appears in the desktop widget gallery (right-click the desktop → Edit Widgets).
 
 ## CI
 
